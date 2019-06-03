@@ -26,4 +26,5 @@
         <lightning:icon iconName="doctype:ai" variant="error"/>
         
         <!-- some comments -->
+        <!-- ci job comment to observe the CI job-->
 </aura:component>
