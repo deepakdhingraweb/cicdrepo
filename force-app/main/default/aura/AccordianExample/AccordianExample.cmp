@@ -25,5 +25,5 @@
 
         <lightning:icon iconName="doctype:ai" variant="error"/>
         
-        <-- some comments -->
+        <!-- some comments -->
 </aura:component>
