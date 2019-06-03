@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <description>Add the updated loop variable to a new record collection variable.</description>
+        <name>Add_to_New_Collection</name>
+        <label>Add to New Collection</label>
+        <locationX>796</locationX>
+        <locationY>462</locationY>
+        <assignmentItems>
+            <assignToReference>oppProducts_new</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>oppProduct_loop</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>1. Set the stage to Prospecting
+2.Set Close Date to 90 days from today</description>
+        <name>Update_Opportunity_Fields</name>
+        <label>Update Opportunity Fields</label>
+        <locationX>194</locationX>
+        <locationY>50</locationY>
+        <assignmentItems>
+            <assignToReference>opportunity.StageName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Prospecting</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>opportunity.CloseDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ninetyDays</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>opportunity.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>NewNameforOpty</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Clone_Opportunity</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Set the loop variable’s opportunity ID to the ID of the new opportunity and its total price to null.</description>
+        <name>Update_Opportunity_Product</name>
+        <label>Update Opportunity Product</label>
+        <locationX>796</locationX>
+        <locationY>51</locationY>
+        <assignmentItems>
+            <assignToReference>oppProduct_loop.OpportunityId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>opportunity.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>oppProduct_loop.TotalPrice</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_to_New_Collection</targetReference>
+        </connector>
+    </assignments>
+    <formulas>
+        <name>NewNameforOpty</name>
+        <dataType>String</dataType>
+        <expression>{!opportunity.TrackingNumber__c}</expression>
+    </formulas>
+    <formulas>
+        <description>Today + 90 days</description>
+        <name>ninetyDays</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() + 90</expression>
+    </formulas>
+    <interviewLabel>Renew Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Renew Opportunity</label>
+    <loops>
+        <description>update each item’s Opportunity ID and Total Price, and then we add the item to a new collection variable</description>
+        <name>Iterate_Over_Products</name>
+        <label>Iterate Over Products</label>
+        <locationX>519</locationX>
+        <locationY>50</locationY>
+        <assignNextValueToReference>oppProduct_loop</assignNextValueToReference>
+        <collectionReference>oppProductsOriginal</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Update_Opportunity_Product</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Clone_Products</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>To create the opportunity</description>
+        <name>Clone_Opportunity</name>
+        <label>Clone Opportunity</label>
+        <locationX>346</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Iterate_Over_Products</targetReference>
+        </connector>
+        <inputReference>opportunity</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <description>To clone the opportunity products and actually insert in the system</description>
+        <name>Clone_Products</name>
+        <label>Clone Products</label>
+        <locationX>515</locationX>
+        <locationY>464</locationY>
+        <inputReference>oppProducts_new</inputReference>
+    </recordCreates>
+    <startElementReference>Update_Opportunity_Fields</startElementReference>
+    <variables>
+        <name>opportunity</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <description>For Loop Variable</description>
+        <name>oppProduct_loop</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OpportunityLineItem</objectType>
+    </variables>
+    <variables>
+        <description>Add the updated loop variable to a new record collection variable.</description>
+        <name>oppProducts_new</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OpportunityLineItem</objectType>
+    </variables>
+    <variables>
+        <name>oppProductsOriginal</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OpportunityLineItem</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,5 @@
+Hey {!ApprovalRequest.Process_Assignee},
+
+Please follow below link
+{!ApprovalRequest.External_URL}
+{!ApprovalRequest.Internal_URL}

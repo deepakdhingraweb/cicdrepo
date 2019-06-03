@@ -1,0 +1,6 @@
+.THIS.rect.anchor {
+    stroke: green;
+}
+.THIS.rect.anchor:hover {
+    fill: red !important;
+}

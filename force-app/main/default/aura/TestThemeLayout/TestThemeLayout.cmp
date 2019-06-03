@@ -1,0 +1,37 @@
+<aura:component implements="forceCommunity:themeLayout">
+     <aura:attribute name="blueBackground" type="Boolean" default="false"/> 
+    <aura:attribute name="smallLogo" type="Boolean" default="false" />
+    <aura:attribute name="navBar" type="Aura.Component[]" />
+     <aura:attribute name="brandingImage" type="Aura.Component[]" />
+     <aura:attribute name="regionC" type="Aura.Component[]" />
+    <aura:attribute name="profileMenu" type="Aura.Component[]" required="false"/>
+
+    <aura:attribute name="search" type="Aura.Component[]" required="false"/>
+
+   <div >
+       <div class="Row">
+           <div class="Column">
+               <img src="/sfsites/c/file-asset/harrier_logotag_horizontal_RGB" alt="Smiley face" style="max-width: 92%;    padding-left: 25%"/>
+           </div >
+           
+           <div class="Column searchboxclass" id="searchbix">
+               {!v.search}
+           </div>
+
+           <div class="Column">
+               {!v.profileMenu}
+           </div>
+       </div>
+       <div>
+           {!v.navBar}
+       </div>
+       <div class="mainContentArea">
+    	{!v.body}
+		</div>
+       <div>	
+           {!v.regionC}
+       </div>   
+   </div>
+
+   
+</aura:component>

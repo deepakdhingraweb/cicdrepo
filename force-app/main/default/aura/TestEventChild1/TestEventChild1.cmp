@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="testdmlcallout">
+    <aura:handler  event="c:TestAppEvent" action="{!c.makeDML}"/>
+    <lightning:card title="Child 1" />
+</aura:component>

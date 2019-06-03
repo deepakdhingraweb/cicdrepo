@@ -1,0 +1,9 @@
+<aura:component >
+    <aura:attribute name="cont" type="Contact" />
+    <aura:registerEvent name="eventHandle" type="c:eventTest"/>
+
+    <ui:outputURL value="{!v.cont.id}"  label="{!v.cont.Name}" click="{!c.linkclick}" target="{!v.cont.Id}">
+        {!v.cont.Id}
+    </ui:outputURL>
+   
+</aura:component>

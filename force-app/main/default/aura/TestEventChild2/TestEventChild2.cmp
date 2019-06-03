@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="testdmlcallout">
+    <aura:handler  event="c:TestAppEvent" action="{!c.makeCallout}"/>
+    <aura:attribute type="String" name="response"/>
+    <lightning:card title="Child 2" >
+        <lightning:inputRichText value="{!v.response}" placeholder="Temp text"/>
+    </lightning:card>
+    
+</aura:component>

@@ -1,0 +1,27 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+    <lightning:icon iconName="action:add_contact" variant="inverse"/>
+        <lightning:icon iconName="action:add_contact" variant="warning"/>
+
+        <lightning:icon iconName="action:add_contact" variant="error"/>
+
+     <lightning:icon iconName="standard:account " variant="inverse"/>
+        <lightning:icon iconName="standard:account " variant="warning"/>
+
+        <lightning:icon iconName="standard:account" variant="error"/>
+
+ <lightning:icon iconName="utility:activity" variant="inverse"/>
+        <lightning:icon iconName="utility:activity" variant="warning"/>
+
+        <lightning:icon iconName="utility:activity" variant="error"/>
+
+    <lightning:icon iconName="utility:light_bulb" variant="inverse"/>
+        <lightning:icon iconName="utility:light_bulb" variant="warning"/>
+
+        <lightning:icon iconName="utility:light_bulb" variant="error"/>
+
+    <lightning:icon iconName="doctype:ai" variant="inverse"/>
+        <lightning:icon iconName="doctype:ai" variant="warning"/>
+
+        <lightning:icon iconName="doctype:ai" variant="error"/>
+</aura:component>

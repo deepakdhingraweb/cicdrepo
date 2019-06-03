@@ -1,0 +1,13 @@
+<aura:component >
+	<p>Hello lightning</p>
+    <aura:attribute name="message" type="List" default="['string 1','string 2']"/>
+    <aura:attribute name="sequence" type="string" />  
+    
+    <p>Buttons Clicked - {!v.sequence}</p>
+    
+    <aura:iteration items="{!v.message}" var="msg" >
+       <p>hey - {!msg}</p>
+        <ui:button label="{!msg}" press="{!c.handleclick}"/>
+    </aura:iteration>
+    
+</aura:component>

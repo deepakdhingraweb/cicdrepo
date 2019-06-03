@@ -1,0 +1,36 @@
+<apex:page showHeader="false" standardStylesheets="false" >
+ <apex:includeLightning />
+ 
+ <div id="lightning" />
+  <head>
+     <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var
+    f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBe
+    fore(j,f);
+    })(window,document,'script','dataLayer','GTM-N4PBP4R');
+     
+        </script>
+    </head>
+  
+  <script>
+  
+   console.log('Starting Load');
+        window.stencil = document.getElementById("axicorp_container");
+
+        $Lightning.use("c:CampingApp", function() {
+
+            $Lightning.createComponent("c:camping",
+            {}, //params
+               "lightning",
+               function callback (cmp) {
+                   console.log("Component Ready!", cmp.toString());
+                 
+               });
+        });
+  
+  </script>
+ 
+</apex:page>

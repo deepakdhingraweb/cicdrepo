@@ -1,0 +1,25 @@
+<apex:page showHeader="false" standardStylesheets="false" >
+ <apex:includeLightning />
+ 
+ <div id="lightning" />
+  
+  
+  <script>
+  
+   console.log('Starting Load');
+        window.stencil = document.getElementById("axicorp_container");
+
+        $Lightning.use("c:eventApp", function() {
+
+            $Lightning.createComponent("c:eventParent",
+            {}, //params
+               "lightning",
+               function callback (cmp) {
+                   console.log("Component Ready!", cmp.toString());
+                 
+               });
+        });
+  
+  </script>
+ 
+</apex:page>

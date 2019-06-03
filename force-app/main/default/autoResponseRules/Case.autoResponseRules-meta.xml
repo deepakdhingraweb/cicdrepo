@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Case Closesure</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>Closed</value>
+            </criteriaItems>
+            <replyToEmail>deepakdhingrawebb@gmail.com</replyToEmail>
+            <senderEmail>deepakdhingraweb@gmail.com</senderEmail>
+            <senderName>Ursa Major Case Closure</senderName>
+            <template>unfiled$public/Case_closure_auto_response</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>New</value>
+            </criteriaItems>
+            <replyToEmail>deepak.dhingra@saasfocus.com</replyToEmail>
+            <senderEmail>deepakdhingraweb@gmail.com</senderEmail>
+            <senderName>New Opened Case</senderName>
+            <template>unfiled$public/Case_closure_auto_response</template>
+        </ruleEntry>
+    </autoResponseRule>
+    <autoResponseRule>
+        <fullName>Case open</fullName>
+        <active>false</active>
+    </autoResponseRule>
+</AutoResponseRules>

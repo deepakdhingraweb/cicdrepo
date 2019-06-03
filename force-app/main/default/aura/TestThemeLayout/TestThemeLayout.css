@@ -1,0 +1,22 @@
+.THIS {
+    position: relative;
+    z-index: 1;
+}
+
+.THIS .searchboxclass
+{
+  
+   
+}
+.THIS .Row
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+   
+}
+.THIS .Column
+{
+    display: table-cell;
+   
+}

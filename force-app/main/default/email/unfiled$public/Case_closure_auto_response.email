@@ -1,0 +1,11 @@
+Hey Mate , 
+
+Your case {!Case.CaseNumber} is being closed, please hit the link below to share your feedback.
+
+
+{!Case.Feedback_Link__c}
+
+
+Regards , 
+
+DD

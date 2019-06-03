@@ -1,0 +1,48 @@
+<aura:component controller="fetchAllAccounts" access="global" implements="flexipage:availableForAllPageTypes">
+     <aura:handler name="init" value="{!this}" action="{!c.myaction}" />
+    <aura:handler name="eventHandle" event="c:eventTest" action="{!c.eventhandle}"/>
+    <aura:attribute name="allaccounts" type="Account[]" />
+   
+    
+    <table>
+    
+    <tr>
+    	<td>
+        
+            Account Name
+        
+        </td> 
+        
+        <td style="padding:30px;">
+        
+        Contacts
+        
+        </td>
+        
+        
+    </tr>
+        
+     <aura:iteration items="{!v.allaccounts}" var="acc">
+         <tr>
+      <td>
+         {!acc.Name}
+        </td> 
+        <td>
+            <table>
+             <tr>
+            <aura:iteration items="{!acc.Contacts}" var="cont" >
+                <td style="padding:10px;">
+                    <c:eventChild cont="{!cont}"/>
+                </td>
+            </aura:iteration>
+             </tr>
+                </table>
+             </td>
+             </tr>
+             
+     </aura:iteration>
+        
+    
+    </table>
+    
+</aura:component>

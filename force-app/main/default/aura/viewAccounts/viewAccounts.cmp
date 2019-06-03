@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="account_view" type="account" />
+    
+    <ui:outputtext value="{!v.account.name}"/>
+    
+    ,
+    
+    <ui:outputtext value="{!v.account.id}"/>
+    
+</aura:component>

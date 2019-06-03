@@ -1,0 +1,12 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: pocscript
+  <!-- End Default Content REMOVE THIS -->
+  
+  <apex:includeScript value="{!$Resource.TestExecuteScript}"/>
+  
+    <div id="comm100-button-5000012" class="live-chat"></div>
+    
+    <apex:includeScript value="{!$Resource.ChatScript}"/>
+</apex:page>

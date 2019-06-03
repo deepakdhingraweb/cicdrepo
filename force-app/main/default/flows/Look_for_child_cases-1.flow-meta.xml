@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decisions>
+        <name>Check_the_size</name>
+        <label>Check the size</label>
+        <locationX>299</locationX>
+        <locationY>243</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>If_we_have_child_cases</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>lstChildCases</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_the_has_child_on_case</targetReference>
+            </connector>
+            <label>If we have child cases</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Look for child cases {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Look for child cases</label>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Look_for_the_child_cases_with_parent_Id</name>
+        <label>Look for the child cases with parent Id</label>
+        <locationX>498</locationX>
+        <locationY>92</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ParendCaseId</elementReference>
+            </value>
+        </filters>
+        <object>Case</object>
+    </recordLookups>
+    <recordLookups>
+        <name>Lookup_for_all_child_cases</name>
+        <label>Lookup for all child cases</label>
+        <locationX>302</locationX>
+        <locationY>90</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_the_size</targetReference>
+        </connector>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ParendCaseId</elementReference>
+            </value>
+        </filters>
+        <object>Case</object>
+        <outputReference>lstChildCases</outputReference>
+        <queriedFields>CaseNumber</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_the_has_child_on_case</name>
+        <label>Update the has child on case</label>
+        <locationX>295</locationX>
+        <locationY>401</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ParendCaseId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Has_Child__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <startElementReference>Lookup_for_all_child_cases</startElementReference>
+    <variables>
+        <name>lstChildCases</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>ParendCaseId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

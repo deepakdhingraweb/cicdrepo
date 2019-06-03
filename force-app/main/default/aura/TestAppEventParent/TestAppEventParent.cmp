@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:registerEvent name="parentEvent" type="c:TestAppEvent"/>
+    <lightning:card title="Component 1" footer="Firing Component" variant="Narrow">
+        <aura:set attribute="actions" >
+	    <lightning:button variant="success" label="Fire Event" title="Success" onclick="{! c.handleClick }"/>
+		</aura:set>
+    </lightning:card>
+</aura:component>

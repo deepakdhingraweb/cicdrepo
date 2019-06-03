@@ -1,0 +1,16 @@
+<aura:component >
+    <aura:attribute name="dataLayer" type="Object" description="Object Ref to the dataLayer object created by Google Tag Manager" />
+	<div class="slds-form-element">
+          <ui:button label="Fire Event 1"
+              class="slds-button slds-button--brand"
+              press="{!c.event1}"/>
+      </div>
+    <div class="slds-form-element">
+          <ui:button label="Fire Event 2"
+              class="slds-button slds-button--brand"
+              press="{!c.event2}"/>
+      </div>
+    <c:campingHeader ></c:campingHeader>
+    <c:campingList ></c:campingList>
+   	
+</aura:component>

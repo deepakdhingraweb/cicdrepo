@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Case clsure</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case closure auto response</name>
+    <style>none</style>
+    <subject>Hey mate, case closed !!</subject>
+    <textOnly>Hey Mate ,  Your case {!Case.CaseNumber} is being closed, please hit the link below to share your feedback.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

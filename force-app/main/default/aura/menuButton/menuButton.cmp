@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<lightning:buttonMenu iconName="utility:settings" onselect = "{!c.handleselect}" >
+        <lightning:menuItem label="ValueItem1" value="ValueItem1"/>
+        <lightning:menuDivider >
+        	<lightning:menuItem label="ValueItem2" value="ValueItem2"/>
+        </lightning:menuDivider>
+    </lightning:buttonMenu>
+</aura:component>

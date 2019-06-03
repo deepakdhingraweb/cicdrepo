@@ -1,0 +1,60 @@
+<apex:page showHeader="false" standardStylesheets="false">
+<apex:includeLightning />
+ 
+  <div id="lightning" />
+<div  id="comm100-button-5000012" class="live-chat" ></div>  
+    <head>
+    
+    <script>
+            var Comm100API = Comm100API || new Object;
+            Comm100API.chat_buttons = Comm100API.chat_buttons || [];
+            var comm100_chatButton = new Object;
+            comm100_chatButton.code_plan = 5000012;
+            comm100_chatButton.div_id = 'comm100-button-5000012';
+            Comm100API.chat_buttons.push(comm100_chatButton);
+
+            var comm100_chatButton_desktop = new Object;
+            comm100_chatButton_desktop.code_plan = 5000012;
+            comm100_chatButton_desktop.div_id = 'comm100-button-5000012-desktop';
+            Comm100API.chat_buttons.push(comm100_chatButton_desktop);
+
+            Comm100API.site_id = 129163;
+            Comm100API.main_code_plan = 5000012;
+
+            var comm100_lc = document.createElement('script');
+            comm100_lc.type = 'text/javascript';
+            comm100_lc.async = true;
+            comm100_lc.src = 'https://chatserver.comm100.com/livechat.ashx?siteId=' + Comm100API.site_id;
+            console.log(comm100_lc);
+            var comm100_s = document.getElementsByTagName('script')[0];
+            var comm100_s = document.getElementsByTagName('script')[0];
+            comm100_s.parentNode.insertBefore(comm100_lc, comm100_s);
+           
+           $Lightning.use("c:commpocapp", function() {
+            console.log('!!! Logging the script');
+            console.log(comm100_s );
+             console.log(JSON.stringify(comm100_s ));
+            $Lightning.createComponent("c:commpoc",
+            {"comm100_lc_light":comm100_lc,"comm100_s_light":comm100_s}, //params
+               "lightning",
+               function callback (cmp) {
+                   console.log("Component Ready!", cmp.toString());
+                   var button_chat = document.getElementById('comm100-button-5000012');
+                   console.log('!!! Chat button');
+                   console.log(button_chat);
+                   
+
+               });
+        });
+  
+ 
+ </script>
+    
+    </head>
+ 
+  
+ 
+ 
+ 
+ 
+</apex:page>

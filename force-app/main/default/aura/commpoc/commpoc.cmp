@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="comm100_lc_light" type="Object"/>
+     <aura:attribute name="comm100_s_light" type="Object"/>
+	<div>HI</div> 
+     <ui:button label="Create Battam"
+              class="slds-button slds-button--brand"
+              press="{!c.createBattam}"/>
+</aura:component>
